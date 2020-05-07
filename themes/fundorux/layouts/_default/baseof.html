@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>{{ block "title" . }}
+		{{ .Site.Title }}
+		{{ end }}</title>
+	<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
+</head>
+
+<body class="bg-near-black white-80 flex flex-column justify-around">
+
+	<nav class="pa3 pa4-ns">
+		<a class="link dim white-80 b f1 f-headline-ns tc db mb3 mb4-ns" href="#" title="Home">Fundorux</a>
+	</nav>
+
+	<!-- Code that all your templates share, like a header -->
+	{{ block "main" . }}
+	<!-- The part of the page that begins to differ between templates -->
+	{{ end }}
+
+
+	<footer class="flex justify-around">
+		<p>
+			<a class="link white-80 hover-red" href="https://fundor333.com">Made by Fundor333</a>/
+			<a class="link white-80 hover-gold" href="https://gohugo.io/"> With Hugo </a>
+		</p>
+	</footer>
+</body>
+
+</html>

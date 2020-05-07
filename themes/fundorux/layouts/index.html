@@ -1,0 +1,39 @@
+{{ define "main" }}
+
+<article class="ph3 ph4-m ph5-l">
+	<div class="pa4">
+		<div class="overflow-auto">
+			<table class="f6 w-100 mw8 center" cellspacing="0">
+				<thead>
+					<tr>
+						<th class="fw6 bb b--white-20 tl pb3 pr3">Regione</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3">Provincia</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3">Nome</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3">;ocation</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3">Link</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3">Mail</th>
+					</tr>
+				</thead>
+				<tbody class="lh-copy">
+					{{ range .Site.Params.location }}
+
+					{{ $url := print "https://raw.github.com/Gelma/LugMap/master/db/"  .  ".txt" }}
+					{{ $sep := "|" }}
+					{{ range $i, $r := getCSV $sep $url }}
+					<tr>
+						<td class="pv3 pr3 bb b--black-20">{{ .  }}</td>
+						<td class="pv3 pr3 bb b--black-20">{{ index $r 0 }}</td>
+						<td class="pv3 pr3 bb b--black-20">{{ index $r 1 }}</td>
+						<td class="pv3 pr3 bb b--black-20">{{ index $r 2 }}</td>
+						<td class="pv3 pr3 bb b--black-20">{{ index $r 3 }}</td>
+						<td class="pv3 pr3 bb b--black-20">{{ index $r 4 }}</td>
+					</tr>
+					{{ end }}
+
+					{{end}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</article>
+{{ end }}

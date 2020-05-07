@@ -1,0 +1,30 @@
+{
+	"baseURL": "https://fundorux.fundor333.com/",
+	"languageCode": "en-us",
+	"title": "Fundorux",
+	"theme": "fundorux",
+	"params": {
+		"location": ["abruzzo",
+			"basilicata",
+			"calabria",
+			"campania",
+			"emilia",
+			"friuli",
+			"lazio",
+			"liguria",
+			"lombardia",
+			"marche",
+			"molise",
+			"piemonte",
+			"puglia",
+			"sardegna",
+			"sicilia",
+			"toscana",
+			"trentino",
+			"umbria",
+			"valle",
+			"veneto",
+			"Italia"
+		]
+	}
+}
