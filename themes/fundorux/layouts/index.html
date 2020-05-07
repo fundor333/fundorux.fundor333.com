@@ -1,39 +1,63 @@
-{{ define "main" }}
+<!DOCTYPE html>
+<html>
 
-<article class="ph3 ph4-m ph5-l">
-	<div class="pa4">
-		<div class="overflow-auto">
-			<table class="f6 w-100 mw8 center" cellspacing="0">
-				<thead>
-					<tr>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Regione</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Provincia</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Nome</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">;ocation</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Link</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Mail</th>
-					</tr>
-				</thead>
-				<tbody class="lh-copy">
-					{{ range .Site.Params.location }}
+<head>
+	<meta charset="utf-8">
+	<title>{{ block "title" . }} {{ .Site.Title }} {{ end }}</title>
+	<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
+</head>
 
-					{{ $url := print "https://raw.github.com/Gelma/LugMap/master/db/"  .  ".txt" }}
-					{{ $sep := "|" }}
-					{{ range $i, $r := getCSV $sep $url }}
-					<tr>
-						<td class="pv3 pr3 bb b--black-20">{{ .  }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 0 }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 1 }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 2 }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 3 }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 4 }}</td>
-					</tr>
-					{{ end }}
+<body class="bg-near-black white-80 flex flex-column justify-around">
 
-					{{end}}
-				</tbody>
-			</table>
+	<nav class="pa3 pa4-ns">
+		<a class="link dim white-80 b f1 f-headline-ns tc db mb3 mb4-ns" href="#" title="Home">Fundorux</a>
+	</nav>
+
+	<!-- Code that all your templates share, like a header -->
+	<article class="ph3 ph4-m ph5-l">
+		<div class="pa4">
+			<div class="overflow-auto">
+				<table class="f6 w-100 mw8 center" cellspacing="0">
+					<thead>
+						<tr>
+							<th class="fw6 bb b--white-20 tl pb3 pr3">Regione</th>
+							<th class="fw6 bb b--white-20 tl pb3 pr3">Provincia</th>
+							<th class="fw6 bb b--white-20 tl pb3 pr3">Nome</th>
+							<th class="fw6 bb b--white-20 tl pb3 pr3">;ocation</th>
+							<th class="fw6 bb b--white-20 tl pb3 pr3">Link</th>
+							<th class="fw6 bb b--white-20 tl pb3 pr3">Mail</th>
+						</tr>
+					</thead>
+					<tbody class="lh-copy">
+						{{ range .Site.Params.location }}
+
+						{{ $url := print "https://raw.github.com/Gelma/LugMap/master/db/"  .  ".txt" }}
+						{{ $sep := "|" }}
+						{{ range $i, $r := getCSV $sep $url }}
+						<tr>
+							<td class="pv3 pr3 bb b--black-20">{{ .  }}</td>
+							<td class="pv3 pr3 bb b--black-20">{{ index $r 0 }}</td>
+							<td class="pv3 pr3 bb b--black-20">{{ index $r 1 }}</td>
+							<td class="pv3 pr3 bb b--black-20">{{ index $r 2 }}</td>
+							<td class="pv3 pr3 bb b--black-20">{{ index $r 3 }}</td>
+							<td class="pv3 pr3 bb b--black-20">{{ index $r 4 }}</td>
+						</tr>
+						{{ end }}
+
+						{{end}}
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
-</article>
-{{ end }}
+	</article>
+
+
+	<footer class="flex justify-around">
+		<p>
+			<a class="link white-80 hover-red" href="https://fundor333.com">Made by Fundor333</a>/
+			<a class="link white-80 hover-gold" href="https://gohugo.io/"> With Hugo </a>
+		</p>
+	</footer>
+</body>
+
+</html>
