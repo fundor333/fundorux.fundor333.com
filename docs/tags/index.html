@@ -3,9 +3,9 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{{ block "title" . }}
-		{{ .Site.Title }}
-		{{ end }}</title>
+	<title>
+		Fundorux
+		</title>
 	<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
 </head>
 
@@ -15,10 +15,11 @@
 		<a class="link dim white-80 b f1 f-headline-ns tc db mb3 mb4-ns" href="#" title="Home">Fundorux</a>
 	</nav>
 
-	<!-- Code that all your templates share, like a header -->
-	{{ block "main" . }}
-	<!-- The part of the page that begins to differ between templates -->
-	{{ end }}
+	
+	
+<h1>Posts</h1>
+
+
 
 
 	<footer class="flex justify-around">
@@ -44,7 +45,7 @@
 			var rlen = rows.length - 1;
 			var arr = new Array();
 			var i, j, cells, clen;
-			// fill the array with values from the table
+			
 			for (i = 0; i < rlen; i++) {
 				cells = rows[i].cells;
 				clen = cells.length;
@@ -53,7 +54,7 @@
 					arr[i][j] = cells[j].innerHTML;
 				}
 			}
-			// sort the array by the specified column number (col) and order (asc)
+			
 			arr.sort(function (a, b) {
 				var retval = 0;
 				var col1 = a[col].toLowerCase().replace(',', '').replace('$', '').replace(' usd', '')
@@ -63,7 +64,7 @@
 				if (col1 != col2) {
 					if ((fA == col1) && (fB == col2)) {
 						retval = (fA > fB) ? asc : -1 * asc;
-					} //numerical
+					} 
 					else {
 						retval = (col1 > col2) ? asc : -1 * asc;
 					}

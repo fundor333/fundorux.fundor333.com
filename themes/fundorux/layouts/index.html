@@ -3,15 +3,15 @@
 <article class="ph3 ph4-m ph5-l">
 	<div class="pa4">
 		<div class="overflow-auto">
-			<table class="f6 w-100 mw8 center" cellspacing="0">
+			<table class="f6 w-100 mw8 center" id="myTable" cellspacing="0">
 				<thead>
-					<tr>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Regione</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Provincia</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Nome</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">;ocation</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Link</th>
-						<th class="fw6 bb b--white-20 tl pb3 pr3">Mail</th>
+					<tr style="cursor:pointer">
+						<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(0);">Regione</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(1);">Provincia</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(2);">Nome</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(3);">Location</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(4);">Link</th>
+						<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(5);">Mail</th>
 					</tr>
 				</thead>
 				<tbody class="lh-copy">
@@ -19,14 +19,20 @@
 
 					{{ $url := print "https://raw.github.com/Gelma/LugMap/master/db/"  .  ".txt" }}
 					{{ $sep := "|" }}
+					{{ $name := .}}
 					{{ range $i, $r := getCSV $sep $url }}
-					<tr>
-						<td class="pv3 pr3 bb b--black-20">{{ .  }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 0 }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 1 }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 2 }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 3 }}</td>
-						<td class="pv3 pr3 bb b--black-20">{{ index $r 4 }}</td>
+					<tr class="row lug" id="{{$name}}">
+						<td class="pv3 pr3 bb b--white-20">{{ humanize $name  }}</td>
+						<td class="pv3 pr3 bb b--white-20">{{ index $r 0 }}</td>
+						<td class="pv3 pr3 bb b--white-20">{{ index $r 1 }}</td>
+						<td class="pv3 pr3 bb b--white-20">{{ index $r 2 }}</td>
+						<td class="pv3 pr3 bb b--white-20">
+							<a class="link white-80 hover-gold" href="{{ index $r 3 }}"
+								target="_blank">{{ index $r 3 }}</a>
+						</td>
+						<td class="pv3 pr3 bb b--white-20">
+							<a class="link white-80 hover-gold" href="mailto:{{ index $r 4 }}">✉️ {{ index $r 4 }}</a>
+						</td>
 					</tr>
 					{{ end }}
 

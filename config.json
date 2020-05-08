@@ -3,13 +3,18 @@
 	"languageCode": "en-us",
 	"title": "Fundorux",
 	"theme": "fundorux",
+	"publishDir": "docs",
 	"params": {
 		"location": ["abruzzo",
 			"basilicata",
-			"calabria",
+			"friuli",
+			"sardegna",
+			"trentino",
+			"Italia"
+		],
+		"location-bugged": ["calabria",
 			"campania",
 			"emilia",
-			"friuli",
 			"lazio",
 			"liguria",
 			"lombardia",
@@ -17,14 +22,11 @@
 			"molise",
 			"piemonte",
 			"puglia",
-			"sardegna",
 			"sicilia",
 			"toscana",
-			"trentino",
 			"umbria",
 			"valle",
-			"veneto",
-			"Italia"
+			"veneto"
 		]
 	}
 }
