@@ -21,7 +21,7 @@
 					{{ $sep := "|" }}
 					{{ $name := .}}
 					{{ range $i, $r := getCSV $sep $url }}
-					<tr class="row lug" id="{{$name}}">
+					<tr class="row lug">
 						<td class="pv3 pr3 bb b--white-20">{{ humanize $name  }}</td>
 						<td class="pv3 pr3 bb b--white-20">{{ index $r 0 }}</td>
 						<td class="pv3 pr3 bb b--white-20">{{ index $r 1 }}</td>
@@ -35,8 +35,24 @@
 						</td>
 					</tr>
 					{{ end }}
-
 					{{end}}
+
+					{{ range $.Site.Data.associazioni.associazioni }}
+					<tr class="row lug">
+						<td class="pv3 pr3 bb b--white-20">{{ humanize .Regione  }}</td>
+						<td class="pv3 pr3 bb b--white-20">{{ .Provincia }}</td>
+						<td class="pv3 pr3 bb b--white-20">{{ .Nome }}</td>
+						<td class="pv3 pr3 bb b--white-20">{{ .Location }}</td>
+						<td class="pv3 pr3 bb b--white-20">
+							<a class="link white-80 hover-gold" href="{{ .Link }}" target="_blank">{{ .Link }}</a>
+						</td>
+						<td class="pv3 pr3 bb b--white-20">
+							<a class="link white-80 hover-gold" href="mailto:{{ .Mail }}">✉️ {{ .Mail }}</a>
+						</td>
+					</tr>
+					{{ end }}
+
+
 				</tbody>
 			</table>
 		</div>
