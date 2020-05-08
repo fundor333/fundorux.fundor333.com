@@ -1,0 +1,4 @@
+---
+title: "Eventi"
+type: "eventi"
+---

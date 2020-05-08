@@ -1,0 +1,42 @@
+{{ define "main" }}
+<div class="ph3 ph4-m ph5-l">
+	<div class="ph3 ph4-m ph5-l ">
+		{{ $year := now.Format "2006"}}
+		{{ $url := print "https://gdg-italia.appspot.com/gdg/calendar/" $year ".json"}}
+		{{ $dataJ := getJSON $url }}
+		<hr class="gold">
+
+		{{ range $dataJ }}
+		{{ if gt (div .time 1000)  now.Unix }}
+		<article class="b--gold post" data-time="">
+			<div class="pv2 ph3">
+				<h1 class="f6 ttu tracked">{{ humanize .groupSlug}} - {{ .name }}</h1>
+			</div>
+
+			<div class="pa3">
+				<small class="gray db pv2">{{ .dateString }} {{.timeString}} - {{ .venueCity }} -
+					{{ .venueAddress }}</small>
+				<p>{{ .description | safeHTML}}</p>
+				{{ range .tags }}
+				<span class="gray">{{ .hashtag }}</span>
+				{{ end }}
+				<p> <a href="{{ .meetupLink }}" target="_blank" class="link white-80 hover-red">Vai all evento</a></p>
+			</div>
+		</article>
+		<hr class="gold post">
+		{{ end }}
+		{{ end }}
+	</div>
+</div>
+{{ end }}
+
+{{define "script"}}
+
+<script>
+	$("article a").addClass("link white-80 hover-red");
+
+	var els = document.getElementsByClassName("post");
+
+</script>
+
+{{ end }}
