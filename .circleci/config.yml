@@ -22,7 +22,7 @@ jobs:
       - deploy:
           name: Deploy static pages to Github Pages
           command: |
-            if [ "${CIRCLE_BRANCH}" = "gh-pages" ]; then
+            if [ "${CIRCLE_BRANCH}" = "master" ]; then
                echo -e "Starting to deploy to Github Pages\n"
                apk add --update git
                apk add --update rsync
