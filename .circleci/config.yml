@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
@@ -9,8 +9,8 @@ jobs:
     environment:
       TZ: "Europe/Rome"
       BRANCH: master
-      TARGET_REPO: fundor333/fundorux
-      HUGO_OUTPUT_FOLDER: docs
+      TARGET_REPO: fundor333/fundorux.git
+      HUGO_OUTPUT_FOLDER: public
     steps:
       - checkout
 
@@ -54,14 +54,11 @@ workflows:
   version: 2
   commit:
     jobs:
-      - build:
-          filters:
-            branches:
-              only: master
+      - build
   nightly:
     triggers:
       - schedule:
-          cron: "0 2 * * *"
+          cron: "0 * * * *"
           filters:
             branches:
               only:

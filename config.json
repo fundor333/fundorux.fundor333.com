@@ -3,7 +3,6 @@
 	"languageCode": "en-us",
 	"title": "Fundorux",
 	"theme": "fundorux",
-	"publishDir": "docs",
 	"params": {
 		"location": ["abruzzo",
 			"basilicata",
