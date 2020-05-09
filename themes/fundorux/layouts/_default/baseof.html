@@ -12,10 +12,11 @@
 <body class="bg-near-black white-80 flex flex-column justify-around">
 
 	<nav class="pa3 tc pa4-ns">
-		<a class="link dim white-80 b f1 f-headline-ns tc db mb3 mb4-ns" href="/" title="Home">Fundorux</a>
+		<a class="link dim white-80 b f1 f-headline-ns tc db mb3 mb4-ns" href="https://fundorux.fundor333.com"
+			title="Home">Fundorux</a>
 
 		{{ $currentPage := . }} {{ range .Site.Data.menu }}
-		<a class="f6 f5-ns dib mr3 link white-80 hover-gold" href="{{ .url }}">
+		<a class="f6 f5-ns dib mr3 link white-80 hover-gold" href="{{ .url | absURL }}">
 			{{ .name }}
 		</a>
 		{{ end }}
