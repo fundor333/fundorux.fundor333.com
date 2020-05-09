@@ -4,28 +4,31 @@
 	"title": "Fundorux",
 	"theme": "fundorux",
 	"googleAnalytics": " UA-44064318-2",
+	"outputs": {
+		"section": [
+			"HTML",
+			"RSS"
+		]
+	},
 	"params": {
 		"location": ["abruzzo",
 			"basilicata",
 			"friuli",
 			"sardegna",
 			"trentino",
-			"Italia"
-		],
-		"location-bugged": ["calabria",
+			"Italia",
+			"calabria",
 			"campania",
 			"emilia",
 			"lazio",
 			"liguria",
 			"lombardia",
 			"marche",
-			"molise",
 			"piemonte",
 			"puglia",
 			"sicilia",
 			"toscana",
 			"umbria",
-			"valle",
 			"veneto"
 		]
 	}
