@@ -17,7 +17,7 @@
 					<tbody class="lh-copy">
 						{{ range .Site.Params.location }}
 
-						{{ $url := print "https://raw.github.com/Gelma/LugMap/master/db/"  .  ".txt" }}
+						{{ $url := print "https://raw.github.com/fundor333/LugMap/master/db/"  .  ".txt" }}
 						{{ $sep := "|" }}
 						{{ $name := .}}
 						{{ range $i, $r := getCSV $sep $url }}
