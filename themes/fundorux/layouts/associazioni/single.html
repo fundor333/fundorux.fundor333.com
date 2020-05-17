@@ -12,60 +12,29 @@
 							<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(3);">Location</th>
 							<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(4);">Link</th>
 							<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(5);">Mail</th>
+							<th class="fw6 bb b--white-20 tl pb3 pr3" onclick="sortTable(6);">Feed</th>
 						</tr>
 					</thead>
 					<tbody class="lh-copy">
-						{{ range .Site.Params.location }}
-
-						{{ $url := print "https://raw.github.com/fundor333/LugMap/master/db/"  .  ".txt" }}
-						{{ $sep := "|" }}
-						{{ $name := .}}
-						{{ range $i, $r := getCSV $sep $url }}
+						{{ $dataJ := getJSON "https://appletune.fundor333.com/api/active/associazioni/" }}
+						{{ range $dataJ.results }}
 						<tr>
-							<td class="pv3 pr3 bb b--white-20">{{ humanize $name  }}</td>
-							<td class="pv3 pr3 bb b--white-20">{{ index $r 0 }}</td>
-							<td class="pv3 pr3 bb b--white-20">{{ index $r 1 }}</td>
-							<td class="pv3 pr3 bb b--white-20">{{ index $r 2 }}</td>
+							<td class="pv3 pr3 bb b--white-20">{{ humanize .regione | default "Italia"  }}</td>
+							<td class="pv3 pr3 bb b--white-20">{{ .provincia }}</td>
+							<td class="pv3 pr3 bb b--white-20">{{ .nome }}</td>
+							<td class="pv3 pr3 bb b--white-20">{{ .citta }}</td>
 							<td class="pv3 pr3 bb b--white-20">
-								<a class="link white-80 hover-gold" href="{{ index $r 3 }}"
-									target="_blank">{{ index $r 3 }}</a>
+								<a class="link white-80 hover-gold" href="{{ .link }}" target="_blank">{{ .link }}</a>
 							</td>
 							<td class="pv3 pr3 bb b--white-20">
-								<a class="link white-80 hover-gold" href="mailto:{{ index $r 4 }}">✉️
-									{{ index $r 4 }}</a>
-							</td>
-						</tr>
-						{{ end }}
-						{{end}}
-
-						{{ range $.Site.Data.associazioni.associazioni }}
-						<tr>
-							<td class="pv3 pr3 bb b--white-20">{{ humanize .Regione  }}</td>
-							<td class="pv3 pr3 bb b--white-20">{{ .Provincia }}</td>
-							<td class="pv3 pr3 bb b--white-20">{{ .Nome }}</td>
-							<td class="pv3 pr3 bb b--white-20">{{ .Location }}</td>
-							<td class="pv3 pr3 bb b--white-20">
-								<a class="link white-80 hover-gold" href="{{ .Link }}" target="_blank">{{ .Link }}</a>
+								{{ if .mail }}
+								<a class="link white-80 hover-gold" href="mailto:{{ .mail }}">✉️ {{ .mail }}</a>
+								{{ end }}
 							</td>
 							<td class="pv3 pr3 bb b--white-20">
-								<a class="link white-80 hover-gold" href="mailto:{{ .Mail }}">✉️ {{ .Mail }}</a>
-							</td>
-						</tr>
-						{{ end }}
-
-						{{ $dataJ := getJSON "https://gdg-italia.appspot.com/gdg/groups.json" }}
-						{{ range $dataJ }}
-						<tr>
-							<td class="pv3 pr3 bb b--white-20">{{ humanize .region | default "Italia"  }}</td>
-							<td class="pv3 pr3 bb b--white-20">{{ .city }}</td>
-							<td class="pv3 pr3 bb b--white-20">{{ .name }}</td>
-							<td class="pv3 pr3 bb b--white-20">{{ .city }}</td>
-							<td class="pv3 pr3 bb b--white-20">
-								<a class="link white-80 hover-gold" href="{{ .meetupLink }}"
-									target="_blank">{{ .meetupLink }}</a>
-							</td>
-							<td class="pv3 pr3 bb b--white-20">
-								<a class="link white-80 hover-gold"></a>
+								{{ if .feed }}
+								<a class="link white-80 hover-gold" target="_blank" href="{{ .feed }}">📰</a>
+								{{ end }}
 							</td>
 						</tr>
 						{{ end }}

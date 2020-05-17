@@ -9,27 +9,5 @@
 			"HTML",
 			"RSS"
 		]
-	},
-	"params": {
-		"location": ["abruzzo",
-			"basilicata",
-			"friuli",
-			"sardegna",
-			"trentino",
-			"Italia",
-			"calabria",
-			"campania",
-			"emilia",
-			"lazio",
-			"liguria",
-			"lombardia",
-			"marche",
-			"piemonte",
-			"puglia",
-			"sicilia",
-			"toscana",
-			"umbria",
-			"veneto"
-		]
 	}
 }
