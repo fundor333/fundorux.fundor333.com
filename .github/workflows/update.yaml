@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  REMOTE: username/username.github.io.git
+  REMOTE: fundor333/fundorux.git
   DEST: public
   TOKEN: ${{ secrets.TOKEN }}
 
